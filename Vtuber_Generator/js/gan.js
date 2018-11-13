@@ -14,7 +14,7 @@ document.getElementById('generate-button').onclick = ui_generate_button_event_li
 
 function ui_generate_button_event_listener(event) {
     flag = true;
-    tf.loadModel('/Vtuber_Generator/model/model.json').then(handleModel).catch(handleError);
+    tf.loadModel('/Vtuber_Generator/tfjs/model.json').then(handleModel).catch(handleError);
     function handleModel(model) {
         const y = tf.tidy(() => {
             const z = tf.randomNormal([1, 100]);
