@@ -9,15 +9,16 @@ Reference: [here](https://github.com/tjwei/GANotebooks/blob/master/dragan-keras.
 # Dataset
 I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total is about 16000 images
 
-<!-- I choose "white background" images. this is important to obtain good result. -->
+# Demo
+I build [website](https://vtuber-gan.herokuapp.com/index.html#/) with Tensorflow.js
 
-
+<!--
 # Example
 
 You need ".npy" file in advance. Then,
 ```bash
 $ python DRAGAN.py
-```
+``` -->
 
 # Result
 
