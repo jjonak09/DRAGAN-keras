@@ -1,8 +1,3 @@
-
-
-# DRAGAN kerasで実装
-# データセットは64x64の画像
-
 from __future__ import print_function, division
 import keras.backend as K
 from keras.layers import Input, Dense, Reshape, Flatten, Dropout
@@ -17,7 +12,7 @@ import matplotlib.pyplot as plt
 import argparse
 from keras.optimizers import Adam
 # import tensorflowjs as tfjs
-# conv_init = RandomNormal(0, 0.02)  # ネットワーク重み平均0,標準偏差0.02
+# conv_init = RandomNormal(0, 0.02)
 
 
 def generator(z_dim):
@@ -28,6 +23,7 @@ def generator(z_dim):
                     input_dim=z_dim
                     # ,  kernel_initializer=conv_init
                     ))
+    # model.add(Activation("relu"))
     model.add(Reshape((4, 4, 512)))
     model.add(Conv2DTranspose(256, 4, strides=2, padding="same"
                               # ,kernel_initializer=conv_init
@@ -73,10 +69,11 @@ def discriminator(img_shape):
                      # ,kernel_initializer=conv_init
                      ))  # 4x4x512
     model.add(LeakyReLU(alpha=0.2))
-    model.add(Conv2D(1, 4, strides=1
-                     # ,kernel_initializer=conv_init
-                     ))
+    # model.add(Conv2D(1, 4, strides=1
+    # # ,kernel_initializer=conv_init
+    # ))
     model.add(Flatten())
+    model.add(Dense(1))
 
     img = Input(shape=img_shape)
     validity = model(img)
@@ -90,9 +87,9 @@ def discriminator(img_shape):
 parser = argparse.ArgumentParser(description="test")
 parser.add_argument("--epoch", default=10000, type=int,
                     help="the number of epochs")
-parser.add_argument("--save_interval", default=10, type=int,
+parser.add_argument("--save_interval", default=100, type=int,
                     help="the interval of snapshot")
-parser.add_argument("--model_interval", default=1000, type=int,
+parser.add_argument("--model_interval", default=100, type=int,
                     help="the interval of savemodel")
 parser.add_argument("--batchsize", default=128, type=int, help="batch size")
 parser.add_argument("--lam", default=10.0, type=float,
@@ -104,6 +101,7 @@ save_interval = args.save_interval
 model_interval = args.model_interval
 batch_size = args.batchsize
 _lambda = args.lam
+
 z_dim = 100
 img_shape = (64, 64, 3)
 image_size = 64
@@ -121,8 +119,8 @@ dis = discriminator(img_shape)
 # load dataset
 # -----------------
 
-X_train = np.load('./dataset_64x64.npy')
-print(X_train.shape)
+X_train = np.load('./64x64.npy')
+# print(X_train.shape)
 X_train = np.float32(X_train)
 X_train = X_train/127.5 - 1
 X_train = np.expand_dims(X_train, axis=3)
@@ -148,23 +146,23 @@ alpha = K.random_uniform(
 dis_mixed = Input(shape=(image_size, image_size, channels),
                   tensor=dis_real + delta_input)
 
-loss_real = K.sum(softplus(dis(dis_real))) / batch_size
+loss_real = K.sum(softplus(-dis(dis_real))) / batch_size
 loss_fake = K.sum(softplus(dis(dis_fake))) / batch_size
 
 dis_mixed_real = alpha * dis_real + ((1 - alpha) * dis_mixed)
 
 grad_mixed = K.gradients(dis(dis_mixed_real), [dis_mixed_real])[0]
+# grad_mixed = K.gradients(dis(dis_mixed), [dis_mixed])[0]
 norm = K.sqrt(K.sum(K.square(grad_mixed), axis=[1, 2, 3]))
-
 grad_penalty = K.mean(K.square(norm - 1))
-
-loss_dis = loss_fake - loss_real + _lambda * grad_penalty
+# loss_dis = loss_fake - loss_real + _lambda * grad_penalty
+loss_dis = loss_fake + loss_real + _lambda * grad_penalty
 
 # -----------------
 # loss for discriminator
 # -----------------
 
-training_updates = Adam(lr=lr_D).get_updates(
+training_updates = Adam(lr=lr_D, beta_1=0.5).get_updates(
     dis.trainable_weights, [], loss_dis)
 dis_train = K.function([dis_real, noisev, delta_input],
                        [loss_real, loss_fake],
@@ -174,15 +172,14 @@ dis_train = K.function([dis_real, noisev, delta_input],
 # loss for generator
 # -----------------
 
-loss_gen = -loss_fake
-training_updates = Adam(lr=lr_G).get_updates(
+loss_gen = K.sum(softplus(-dis(dis_fake))) / batch_size
+training_updates = Adam(lr=lr_G, beta_1=0.5).get_updates(
     gen.trainable_weights, [], loss_gen)
 gen_train = K.function([noisev],
                        [loss_gen],
                        training_updates)
 
-
-fixed_noise = np.random.normal(size=(36, z_dim))
+fixed_noise = np.random.normal(size=(25, z_dim))
 batch = X_train.shape[0] // batch_size
 
 for epoch in range(epochs):
@@ -204,6 +201,7 @@ for epoch in range(epochs):
         if epoch % save_interval == 0 and index == 0:
             gen_imgs = gen.predict(fixed_noise)
             r, c = 5, 5
+            # Rescale images 0 - 1
             gen_imgs = 0.5 * gen_imgs + 0.5
             fig, axs = plt.subplots(r, c)
             cnt = 0
@@ -212,7 +210,7 @@ for epoch in range(epochs):
                     axs[i, j].imshow(gen_imgs[cnt])
                     axs[i, j].axis('off')
                     cnt += 1
-            fig.savefig("result/Vtuber_%d.png" % epoch)
+            fig.savefig("result/%d.png" % epoch)
             plt.close()
             if epoch % model_interval == 0 and index == 0:
                 gen.save("DRAGAN_model/model-{}-epoch.h5".format(epoch))
