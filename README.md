@@ -26,7 +26,7 @@ $ python DRAGAN.py
 
 - Input size: 64x64
 - Batch size: 128
-- This is 800epochs( It takes 8 hours to get this result with GTX 1060)
+- This is 1000epochs( It takes 9 hours to get this result with GTX 1060)
 
 ## Environment
 - OS: Windows 10
