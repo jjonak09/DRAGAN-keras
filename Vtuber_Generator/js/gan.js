@@ -2,6 +2,7 @@ var canvas_num = 0;
 var flag = false;
 var array = [];
 
+
 function init() {
     var canvas = document.getElementById("the_canvas");
     var ctx = canvas.getContext("2d");
@@ -12,9 +13,10 @@ window.onload = init();
 
 document.getElementById('generate-button').onclick = ui_generate_button_event_listener;
 
+// ノイズから画像を生成する関数
 function ui_generate_button_event_listener(event) {
     flag = true;
-    tf.loadModel('/Vtuber_Generator/tfjs/model.json').then(handleModel).catch(handleError);
+    tf.loadModel('/Vtuber_Generator/model/model.json').then(handleModel).catch(handleError);
     function handleModel(model) {
         const y = tf.tidy(() => {
             const z = tf.randomNormal([1, 100]);
@@ -33,6 +35,7 @@ function ui_generate_button_event_listener(event) {
 
 }
 
+// 画像を拡大する関数
 function image_enlarge(y, draw_multiplier) {
     if (draw_multiplier === 1) {
         return y;
@@ -44,13 +47,13 @@ function image_enlarge(y, draw_multiplier) {
     ).reshape([size * draw_multiplier, size * draw_multiplier, 3])
 }
 
+// 画像の生成履歴の表示
 function history() {
     if (flag == false) return;
     var canvas = document.createElement('canvas')
     canvas.id = String(canvas_num)
-    document.getElementById('history').appendChild(canvas).addEventListener("click", function () { console.log("clicked"); }, false);
+    document.getElementById('history').appendChild(canvas);
     c = document.getElementById(String(canvas_num));
     tf.toPixels(image_enlarge(array[canvas_num], 2), c);
     canvas_num += 1;
 }
-history();

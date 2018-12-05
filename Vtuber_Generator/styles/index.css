@@ -1,19 +1,35 @@
 header{
 padding: 1px 0;
 font-family: Verdana,sans-serif;
-background-color: rgba(0, 0, 0, 0.815);
-
-}
-header h1{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.87);
-    text-align: center;
-    font-size: 80px;
+background-color: rgba(99, 76, 76, 0.952);
 }
 
-body{
-    margin:0;
+header > ul{
+    color: white;
+    display: -webkit-flex;
+    display: flex;
+    padding: 15px 0px 15px 20px;
+    font-size: 120%;
+}
+
+ul > img{
+    padding-left: 50px;
+}
+
+ul > a{
+    font-family: Verdana,sans-serif;
+    padding-left: 10px;
+    padding-right: 80px;
+    color: white;
+}
+
+ul > a:hover{
+    color: orange;
+}
+
+
+body {
+    margin: 0;
 }
 
 body hr{
@@ -27,12 +43,12 @@ body hr{
     margin: auto;
 }
 .content {
-    margin-right: 100px;
+    margin-right: 200px;
     height: 300px;
 }
 
 .generation-panel {
-    margin-top: 30px;
+    margin-top: 70px;
     padding-left: 200px;
 }
 
@@ -40,15 +56,22 @@ body hr{
     position: relative;
     outline: 3px dotted rgb(243, 186, 29);
     margin: 30px 0;
+    box-shadow: 0 0 30px gray;
 }
 #history {
-    padding-top: 40px;
-    padding-left: 80px;
+    padding-top: 20px;
+    padding-left: 20px;
+    overflow:scroll;
+    background-color: rgba(243, 186, 29, 0.041);
+    width:550px;
+    height: 800px;
+    box-shadow: 0 0 30px gray;
 }
 
-#history h2{
-    padding-left: 10px;
-    padding-bottom: 10px;
+.content-left h2{
+    font-family: Verdana,sans-serif;
+    color:rgba(255, 123, 0, 0.801);
+    padding-bottom: 5px;
     margin-top: 0px;
     font-size: 30px;
 }
@@ -66,6 +89,7 @@ body hr{
     background: white;
     border-radius: 3px;
     transition: .4s;
+    box-shadow: 3px 3px #ffbe75;
 }
 
 .square_btn:hover {
@@ -73,6 +97,36 @@ body hr{
     color: white;
 }
 
+.btn {
+    padding-left: 480px;
+    padding-bottom: 100px;
+}
+
 .info {
     margin-bottom:400px;
+}
+
+footer {
+    margin-top: 500px;
+    padding-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.801);
+    display: -webkit-flex;
+    display: flex;
+}
+footer  > ul {
+    display: -webkit-flex;
+    display: flex;
+    padding-left: 60px;
+}
+footer ul >  a{
+    padding: 19px 0px 0px 10px;
+
+}
+.github{
+    padding: 17px 0px 0px 60px;
+}
+
+.twitter-share-button{
+    margin:20px 0px 0px 40px;
+
 }

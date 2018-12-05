@@ -1,6 +1,6 @@
 # Keras DRAGAN
 
-Implementation of DRAGAN with keras.
+Implementation of DRAGAN(Deep Regret Analytic Generative Adversarial Networks) with keras.
 
 Paper: [here](https://arxiv.org/abs/1705.07215)
 
@@ -23,6 +23,9 @@ $ python DRAGAN.py
 # Result
 
 ![DRAGAN](./result.png)
+
+### latent
+![latent](./latent.jpg)
 
 - Input size: 64x64
 - Batch size: 128

@@ -4,15 +4,19 @@
 <head>
     <meta charset=utf-8>
     <meta name=viewport content="width=device-width,initial-scale=1">
-    <title>DRAGAN using Tensorflow.js</title>
+    <title>GIRLSGENERATOR</title>
     <link rel="stylesheet " href=/Vtuber_Generator/styles/index.css>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700|Teko:600" rel=stylesheet>
     <link href=/Vtuber_Generator/css/app.ae64d7fa9af9b80ce198011a9710bbeb.css rel=stylesheet>
+    <link rel="icon" href="Vtuber_Generator/image/head.ico">
 </head>
 
 <body>
     <header>
-        <h1>Vtuber Generator</h1>
+        <ul>
+            <img src="Vtuber_Generator/image/header.png">
+            <a href="./index.html"> GIRLSGENERATOR</a>
+        </ul>
     </header>
     <div id=app></div>
     <div class=wrapper>
@@ -24,10 +28,20 @@
                 <button class=square_btn id=generate-button>Generate</button>
             </div>
         </div>
-        <div id=history>
+        <div class=content-left>
             <h2>履歴</h2>
+            <div id=history>
+            </div>
         </div>
     </div>
+    <footer>
+        <ul>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet </a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <img class="github" src="Vtuber_Generator/image/github.png">
+            <a href="https://github.com/jjonak09/DRAGAN" target="_blank"> GITHUB</a>
+        </ul>
+    </footer>
     <script src=https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0></script>
     <script src=/Vtuber_Generator/js/gan.js></script>
     <script type=text/javascript src=/Vtuber_Generator/js/manifest.2ae2e69a05c33dfc65f8.js></script>
