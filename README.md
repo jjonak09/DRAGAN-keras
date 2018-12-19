@@ -10,7 +10,7 @@ Reference: [here](https://github.com/tjwei/GANotebooks/blob/master/dragan-keras.
 I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total is about 16000 images
 
 # Demo
-I build [website](https://vtuber-gan.herokuapp.com/index.html#/) with Tensorflow.js
+I build [website](https://girlsgan.herokuapp.com/index.html#/) with Tensorflow.js
 
 <!--
 # Example
