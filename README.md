@@ -11,7 +11,7 @@ I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total
 
 
 # Demo
-I build [website](https://girlsgan.herokuapp.com/index.html#/) with Tensorflow.js
+I build [website](https://girlsgan.herokuapp.com/index.html#/) with Tensorflow.js (chorme)
 
 <!--
 # Example
