@@ -32,6 +32,8 @@ $ python DRAGAN.py
 - Batch size: 128
 - This is 1000epochs( It takes 9 hours to get this result with GTX 1060)
 
+やっぱりDeconvolutionよりPixel Shufflerをつかったほうが綺麗だし学習速いですね
+
 ## Environment
 - OS: Windows 10
 - CPU: Intel(R) Core(TM)i7-8700
