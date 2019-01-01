@@ -63,10 +63,22 @@ body hr{
     padding-left: 20px;
     overflow:scroll;
     background-color: rgba(243, 186, 29, 0.041);
+<<<<<<< HEAD
     width:550px;
     height: 800px;
     box-shadow: 0 0 30px gray;
 }
+=======
+    width:590px;
+    height: 800px;
+    box-shadow: 0 0 30px gray;
+}
+.his_canvas{
+    position: relative;
+    margin: 5px 5px;
+}
+
+>>>>>>> improve
 
 .content-left h2{
     font-family: Verdana,sans-serif;
