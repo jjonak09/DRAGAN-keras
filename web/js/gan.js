@@ -23,11 +23,7 @@ function ui_generate_button_event_listener(event) {
             var y = model.predict(z).squeeze().div(tf.scalar(2)).add(tf.scalar(0.5));
             return y;
         });
-<<<<<<< HEAD
         array.push(y)
-=======
-        array.push(y);
->>>>>>> improve
 
         let c = document.getElementById("the_canvas");
         tf.toPixels(image_enlarge(y, 4), c);
@@ -56,10 +52,7 @@ function history() {
     if (flag == false) return;
     var canvas = document.createElement('canvas')
     canvas.id = String(canvas_num)
-<<<<<<< HEAD
-=======
     canvas.classList.add('his_canvas')
->>>>>>> improve
     document.getElementById('history').appendChild(canvas);
     c = document.getElementById(String(canvas_num));
     tf.toPixels(image_enlarge(array[canvas_num], 2), c);
