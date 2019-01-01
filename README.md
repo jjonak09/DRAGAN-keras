@@ -6,6 +6,9 @@ Paper: [here](https://arxiv.org/abs/1705.07215)
 
 Reference: [here](https://github.com/tjwei/GANotebooks/blob/master/dragan-keras.ipynb)
 
+
+![DRAGAN_Alg](./DRAGAN_alg.png)
+
 # Dataset
 I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total is about 16000 images
 
