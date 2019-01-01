@@ -7,7 +7,7 @@ Paper: [here](https://arxiv.org/abs/1705.07215)
 Reference: [here](https://github.com/tjwei/GANotebooks/blob/master/dragan-keras.ipynb)
 
 
-![DRAGAN_Alg](./DRAGAN_alg.png)
+![DRAGAN_Alg](./image/DRAGAN_alg.png)
 
 # Dataset
 I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total is about 16000 images
@@ -18,29 +18,21 @@ I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total
 # Demo
 I build [website](https://girlsgan.herokuapp.com/index.html#/) with Tensorflow.js (recommend chorme)
 
-<!--
-# Example
 
-You need ".npy" file in advance. Then,
-```bash
-$ python DRAGAN.py
-``` -->
 
 # Result
 
-![DRAGAN](./result.png)
+![DRAGAN](./image/result.png)
 
 ### latent
-![latent](./latent.jpg)
+![latent](./image/latent.jpg)
 
 - Input size: 64x64
 - Batch size: 128
 - This is 1000epochs( It takes 9 hours to get this result with GTX 1060)
 
-やっぱりDeconvolutionよりPixel Shufflerをつかったほうが綺麗だし学習速いですね
-
 ## Environment
 - OS: Windows 10
 - CPU: Intel(R) Core(TM)i7-8700
 - GPU: NVIDIA GTX1060 6GB
-- RAM: 8GB
+- RAM: 16GB
