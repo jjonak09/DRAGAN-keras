@@ -12,7 +12,6 @@ Reference: [here](https://github.com/tjwei/GANotebooks/blob/master/dragan-keras.
 # Dataset
 I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total is about 16000 images
 
-学習する部分を減らすために、データセットの背景は白で統一した方が綺麗な画像ができるようです
 
 
 # Demo
