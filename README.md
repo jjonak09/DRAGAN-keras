@@ -20,10 +20,16 @@ I build [website](https://girlsgan.herokuapp.com/index.html#/) with Tensorflow.j
 
 
 # Result 
+
 ### DRAGAN 
- 
+
+
+imagesize: 64x64
+batchsize: 128
+
+
 ![DRAGAN](./image/result.png) 
- imagesize: 64x64 batchsize: 128
+
  
  
 ### DRAGAN + EDSR
