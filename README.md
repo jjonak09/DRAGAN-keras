@@ -19,16 +19,28 @@ I build [website](https://girlsgan.herokuapp.com/index.html#/) with Tensorflow.j
 
 
 
-# Result
+# Result 
+### DRAGAN 
+ 
+![DRAGAN](./image/result.png) 
+ imagesize: 64x64 batchsize: 128
+ 
+ 
+### DRAGAN + EDSR
 
-![DRAGAN](./image/result.png)
+imagesize: 128x128
+batchsize: 32
+![DRAGAN2](./EDSR/result.png)
+
+### DRAGAN + RDN
+
+imagesize: 128x128
+batchsize: 32
+![DRAGAN3](./RDN/result.png)
 
 ### latent
 ![latent](./image/latent.jpg)
 
-- Input size: 64x64
-- Batch size: 128
-- This is 1000epochs( It takes 9 hours to get this result with GTX 1060)
 
 ## Environment
 - OS: Windows 10
