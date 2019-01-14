@@ -36,12 +36,16 @@ batchsize: 128
 
 imagesize: 128x128
 batchsize: 32
+
+
 ![DRAGAN2](./EDSR/result.png)
 
 ### DRAGAN + RDN
 
 imagesize: 128x128
 batchsize: 32
+
+
 ![DRAGAN3](./RDN/result.png)
 
 ### latent
