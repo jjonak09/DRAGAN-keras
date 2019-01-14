@@ -15,47 +15,21 @@ from keras.initializers import RandomNormal,glorot_uniform
 conv_init = RandomNormal(0, 0.02)
 w_init = glorot_uniform()
 
-def SubpixelConv2D(input_shape, scale=2):
-
-    # Copyright (c) 2017 Jerry Liu
-    # Released under the MIT license
-    # https://github.com/twairball/keras-subpixel-conv/blob/master/LICENSE
-
-    def subpixel_shape(input_shape):
-        dims = [input_shape[0],
-                input_shape[1] * scale,
-                input_shape[2] * scale,
-                int(input_shape[3] / (scale ** 2))]
-        output_shape = tuple(dims)
-        return output_shape
-
-    def subpixel(x):
-        return tf.depth_to_space(x, scale)
-
-    return Lambda(subpixel, output_shape=subpixel_shape)
-
-
 def ResBlock(channels, input_layer):
     h = Conv2D(channels, 3, strides=1, padding="same",kernel_initializer=conv_init)(input_layer)
+    h = BatchNormalization(momentum=0.8)(h)
     h = Activation('relu')(h)
     h = Conv2D(channels, 3, strides=1, padding="same",kernel_initializer=conv_init)(h)
     h = Lambda(lambda h: h * 0.1)(h)
     return Add()([h, input_layer])
 
 
-def CBR(channels, input_layer):
-    h = Conv2D(channels, 3, strides=1, padding="same")(input_layer)
-    h = SubpixelConv2D(h)(h)
-    h = BatchNormalization(momentum=0.8)(h)
-    h = Activation('relu')(h)
-    return h
-
-# def CBR(channels, layer_input):
-#     x = UpSampling2D(size=2)(layer_input)
-#     x = Conv2D(channels,3,strides=1,padding="same",kernel_initializer=w_init)(x)
-#     x = BatchNormalization(momentum=0.8)(x)
-#     x = Activation('relu')(x)
-#     return x
+def CBR(channels, layer_input):
+    x = UpSampling2D(size=2)(layer_input)
+    x = Conv2D(channels,3,strides=1,padding="same",kernel_initializer=w_init)(x)
+    x = BatchNormalization(momentum=0.8)(x)
+    x = Activation('relu')(x)
+    return x
 
 
 def Generator(z_dim, base=64):
@@ -65,8 +39,6 @@ def Generator(z_dim, base=64):
     x = BatchNormalization(momentum=0.8)(x)
     x = Activation('relu')(x)
     r = ResBlock(base, x)
-    r = ResBlock(base, r)
-    r = ResBlock(base, r)
     r = ResBlock(base, r)
     r = ResBlock(base, r)
     r = ResBlock(base, r)
