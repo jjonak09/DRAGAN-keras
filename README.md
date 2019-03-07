@@ -15,20 +15,42 @@ I got images from Twitter,Pinterest, and [Getchu](http://www.getchu.com/). Total
 
 
 # Demo
-I build [website](https://girlsgan.herokuapp.com/index.html#/) with Tensorflow.js (recommend chorme)
+I build [website](https://girls-gan.herokuapp.com/index.html#/) with Tensorflow.js (recommend chorme)
 
 
 
-# Result
+# Result 
 
-![DRAGAN](./image/result.png)
+### DRAGAN 
+
+
+imagesize: 64x64
+batchsize: 128
+
+
+![DRAGAN](./image/result.png) 
+
+ 
+ 
+### DRAGAN + EDSR
+
+imagesize: 128x128
+batchsize: 32
+
+
+![DRAGAN2](./EDSR/result.png)
+
+### DRAGAN + RDN
+
+imagesize: 128x128
+batchsize: 32
+
+
+![DRAGAN3](./RDN/result.png)
 
 ### latent
 ![latent](./image/latent.jpg)
 
-- Input size: 64x64
-- Batch size: 128
-- This is 1000epochs( It takes 9 hours to get this result with GTX 1060)
 
 ## Environment
 - OS: Windows 10
