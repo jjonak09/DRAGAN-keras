@@ -30,7 +30,13 @@ batchsize: 128
 
 ![DRAGAN](./image/result.png) 
 
+### DRAGAN + Residual
  
+imagesize: 64x64
+batchsize: 128
+
+
+![DRAGAN4](./residual/residual128.png) 
  
 ### DRAGAN + RDN
 
